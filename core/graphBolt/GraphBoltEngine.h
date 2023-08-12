@@ -26,6 +26,7 @@
 #include "AdaptiveExecutor.h"
 #include "ingestor.h"
 #include <vector>
+#include <cassert>
 
 enum UpdateType { edge_addition_enum, edge_deletion_enum };
 

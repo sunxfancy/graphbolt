@@ -537,7 +537,7 @@ template <class vertex> void compute(graph<vertex> &G, commandLine config) {
   double mod_val = config.getOptionDoubleValue("-modVal", MOD_VAL_CF);
   bool rand_init = config.getOption("-randInit");
   double lambda = config.getOptionDoubleValue("-lambda", 0.00000055); // lambda
-  double epsilon = 0.010000000000000000000000000d;
+  double epsilon = 0.010000000000000000000000000;
 
   CFGlobalInfo global_info(n, epsilon, mod_val);
 

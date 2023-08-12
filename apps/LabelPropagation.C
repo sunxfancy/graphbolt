@@ -33,7 +33,7 @@
 #define PARTITION_FILE_DEFAULT ""
 #define SEED_FILE_DEFAULT ""
 #define NUMBER_OF_FEATURES 2
-#define MOD_VAL_LP 0.5d
+#define MOD_VAL_LP 0.5
 
 // ======================================================================
 // AGGREGATEVALUE AND VERTEXVALUE STRUCTURES
@@ -452,8 +452,8 @@ template <class vertex> void compute(graph<vertex> &G, commandLine config) {
   string seeds_file_path =
       config.getOptionValue("-seedsFile", PARTITION_FILE_DEFAULT);
   double mod_val = config.getOptionDoubleValue("-modVal", MOD_VAL_LP);
-  double epsilon = config.getOptionDoubleValue("-epsilon", 0.01d);
-  double alpha = 0.15d;
+  double epsilon = config.getOptionDoubleValue("-epsilon", 0.01);
+  double alpha = 0.15;
 
   LPInfo<vertex> global_info(&G, n, epsilon, mod_val, alpha);
 
