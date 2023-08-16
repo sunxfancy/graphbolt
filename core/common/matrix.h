@@ -202,6 +202,7 @@ template <class T>
 T *getTransposeProduct(const T *A, int A_rows, int A_cols, T *B, int B_rows,
                        int B_cols) {
   multiplyMatrices(A, A_rows, A_cols, A, A_cols, A_rows, B, B_rows, B_cols);
+  return B;
 }
 
 template <class T> void printMatrix(T *A, int A_rows, int A_cols) {

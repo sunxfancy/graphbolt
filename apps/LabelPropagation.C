@@ -50,6 +50,7 @@ public:
     for (int i = 0; i < NUMBER_OF_FEATURES; i++) {
       ngh_sum[i] = object.ngh_sum[i];
     }
+    return *this;
   }
   friend ostream &operator<<(ostream &os, const LPVertexAggregationData &dt);
 };
@@ -76,6 +77,7 @@ public:
     for (int i = 0; i < NUMBER_OF_FEATURES; i++) {
       features[i] = object.features[i];
     }
+    return *this;
   }
   friend ostream &operator<<(ostream &os, const LPVertexData &dt);
 };

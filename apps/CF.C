@@ -61,6 +61,7 @@ public:
             object.inverse_component[i * NUMBER_OF_FACTORS + j];
       }
     }
+    return *this;
   }
   friend ostream &operator<<(ostream &os, const CFVertexAggregationData &dt);
 };
@@ -88,6 +89,7 @@ public:
     for (int i = 0; i < NUMBER_OF_FACTORS; i++) {
       latent_factors[i] = object.latent_factors[i];
     }
+    return *this;
   }
   friend ostream &operator<<(ostream &os, const CFVertexData &dt);
 };
@@ -216,6 +218,7 @@ public:
     }
     partition_flags = object.partition_flags;
     partition_flags_array_size = object.partition_flags_array_size;
+    return *this;
   }
 
   void copy(const CFGlobalInfo &object) {

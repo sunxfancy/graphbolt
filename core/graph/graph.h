@@ -460,6 +460,7 @@ public:
       }
       return V;
     }
+    return nullptr;
   }
 
   void *updateVertices_symmetric(uintV maxVertex) {
@@ -492,6 +493,7 @@ public:
       }
       return V;
     }
+    return nullptr;
   }
 
   edgeArray addEdges_symmetric(edgeArray &edgesToAdd, bool *updatedVertices) {

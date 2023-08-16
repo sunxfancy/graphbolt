@@ -353,7 +353,7 @@ public:
     return update_successful;
   }
 
-  int traditionalIncrementalComputation() {
+  void traditionalIncrementalComputation() {
     while (active_vertices_bitset.anyScheduledTasks()) {
       active_vertices_bitset.newIteration();
       parallel_for(uintV u = 0; u < n; u++) {
