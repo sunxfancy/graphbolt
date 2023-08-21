@@ -352,6 +352,7 @@ template <class ET, class intT> ET plusScanI(ET *In, ET *Out, intT n) {
 // them as an integer
 // Only optimized when n is a multiple of 512 and Fl is 4byte aligned
 template <class intT> intT sumFlagsSerial(bool *Fl, intT n) {
+  cout << "sumFlagsSerial FL = " << Fl << " n = " << n << endl;
   intT r = 0;
   if (n >= 128 && (n & 511) == 0 && ((long)Fl & 3) == 0) {
     int *IFl = (int *)Fl;
@@ -389,7 +390,10 @@ _seq<ET> pack(ET *Out, bool *Fl, intT s, intT e, F f) {
     return packSerial(Out, Fl, s, e, f);
   intT *Sums = newA(intT, l);
   blocked_for(i, s, e, _F_BSIZE, Sums[i] = sumFlagsSerial(Fl + s, e - s););
+  for (intT i = 0; i < l; i++)
+    cout << "Sums[" << i << "] = " << Sums[i] << endl;
   intT m = plusScan(Sums, Sums, l);
+  cout << "m = " << m << endl;
   if (Out == NULL)
     Out = newA(ET, m);
   blocked_for(i, s, e, _F_BSIZE, packSerial(Out + Sums[i], Fl, s, e, f););

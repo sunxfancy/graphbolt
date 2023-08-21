@@ -115,8 +115,10 @@ _seq<char> readStringFromFile(char *fileName) {
     abort();
   }
   unsigned long end = file.tellg();
+  cout << "end : " << end << endl;
   file.seekg(0, ios::beg);
   unsigned long n = end - file.tellg();
+  cout << "readStringFromFile: " << n << endl;
   char *bytes = newA(char, n + 1);
   file.read(bytes, n);
   file.close();
@@ -125,6 +127,8 @@ _seq<char> readStringFromFile(char *fileName) {
 
 // parallel code for converting a string to words
 words stringToWords(char *Str, unsigned long n) {
+  cout << "n : " << n << endl;
+
   {
     parallel_for(unsigned long i = 0; i < n; i++) if (isSpace(Str[i])) Str[i] =
         0;
@@ -139,6 +143,9 @@ words stringToWords(char *Str, unsigned long n) {
 
   // offset for each start of word
   _seq<unsigned long> Off = sequence::packIndex<unsigned long>(FL, n);
+
+  cout << "Off.n : " << Off.n << endl;
+
   unsigned long m = Off.n;
   unsigned long *offsets = Off.A;
 
@@ -326,14 +333,17 @@ graph<vertex> readGraphFromFile(char *fname, bool isSymmetric, bool simpleFlag,
   unsigned long edgeDataSize = atol(
       W.Strings[3]); // this really doesn't matter (should we even keep it?)
 
-  // cout << "n :" << n << endl;
-  // cout << "m :" << m << endl;
+  cout << W.Strings[44] << endl;
+
+  cout << "n : " << n << endl;
+  cout << "m : " << m << endl;
+  cout << "len : " << len << endl;
 #ifdef EDGEDATA
   if (len != n + 2 * m + 2) {
 #else
   if (len != n + m + 2) {
 #endif
-    cout << "Length" << len << endl;
+    cout << "Length : " << len << endl;
     cout << "Bad input file" << endl;
     abort();
   }
